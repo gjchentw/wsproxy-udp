@@ -23,7 +23,7 @@ wss.on('connection', function(ws) {
  
     //When a message is received from ws client send it to udp server.
     ws.on('message', function(message) {
-        var msgBuff = new Buffer(message);
+        var msgBuff = Buffer.from(message);
         udpClient.send(msgBuff, 0, msgBuff.length, SERVER_PORT, SERVER_IP);
     });
 });
